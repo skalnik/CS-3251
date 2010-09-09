@@ -1,0 +1,34 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\title{Homework 1}
+\author{Mike Skalnik}
+
+\newcommand{\s}[1]{\setcounter{enumi}{#1}}
+\newcommand{\unit}[1]{\ensuremath{\, \mathrm{#1}}}
+
+\begin{document}
+
+\begin{flushright}{\large Homework 1\\ Mike Skalnik}\end{flushright}
+
+\begin{enumerate}
+  \s{5}
+  \item For the digital stream, it takes $\frac{56}{65536} \unit{seconds}$ until there are enough bytes to make a packet. Once the packet is created it takes $\left(\frac{1}{2 \unit{Mbps}}\right) \times 56 \unit{bytes}$ along with the 10 millisecond propagation delay, which is a total of $11.068 \unit{milliseconds}$.
+
+  \s{8}
+  \item
+    \begin{enumerate}
+      \item $\frac{1 \unit{Gbps}}{100 \unit{kbps}} = 10485 \unit{Users}$.
+      \item Using simple algebra we can use $p \times M = N$ to see that $p = \frac{N}{M}$.
+    \end{enumerate}
+
+  \s{10}
+  \item $\frac{1}{2 \unit{Mbps}} \times \left(4.5 \unit{packets} \times 1500 \frac{\unit{bytes}}{\unit{packet}}\right) = 25.749 \unit{milliseconds}$. More generally, $\frac{1}{R} \times \left(\left(n + \frac{x}{L}\right) \times L\right)$ is the queueing delay. 
+
+  \s{22}
+  \item
+
+  \s{29}
+  \item
+\end{enumerate}
+\end{document}
