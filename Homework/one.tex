@@ -6,6 +6,7 @@
 
 \newcommand{\s}[1]{\setcounter{enumi}{#1}}
 \newcommand{\unit}[1]{\ensuremath{\, \mathrm{#1}}}
+\newcommand{\e}[1]{\ensuremath{\times 10^{#1}}}
 
 \begin{document}
 
@@ -26,9 +27,15 @@
   \item $\frac{1}{2 \unit{Mbps}} \times \left(4.5 \unit{packets} \times 1500 \frac{\unit{bytes}}{\unit{packet}}\right) = 25.749 \unit{milliseconds}$. More generally, $\frac{1}{R} \times \left(\left(n + \frac{x}{L}\right) \times L\right)$ is the queueing delay. 
 
   \s{22}
-  \item
+  \item Transferring the data would take $\frac{1}{100 \unit{Mbps}} \times 20 \unit{Terabytes} = 19.418 \unit{days}$. Because of this, I would pay for FedEx overnight delivery.
 
   \s{29}
   \item
+    \begin{enumerate}
+      \item It will take $\frac{1}{2 \unit{Mbps}} \times 8\e{6} \unit{bits} = 3.815 \unit{seconds}$ to get to the first packet switch. The total time to get to the destination will be $3 \times \left(\frac{1}{2 \unit{Mbps}} \times 8\e{6} \unit{bits} \right) = 11.444 \unit{seconds}$.
+      \item For the first packet to get to the destination, it'll take $3 \times \left(\frac{1}{2 \unit{Mbps}} \times 2000 \unit{bits} \right) = 2.861 \unit{milliseconds}$. The second packet will arrive $4 \times \left(\frac{1}{2 \unit{Mbps}} \times 200 \unit{bits} \right) = 3.815 \unit{milliseconds}$ after the transfer starts.
+      \item Since there are 4000 packets total, and the last one will have to wait until the one before it has been transfered to the first packet switch before it can start transferring. This means it will take a total of $4003 \times \left(\frac{1}{2 \unit{Mbps}} \times 2000 \unit{bits} \right) = 3.818 \unit{seconds}$ to transfer the entire file using message segmentation. This is a lot quicker than sending the file whole, which takes 11.444 seconds, as seen in (a).
+      \item Message Segmentation has two main drawbacks. Firstly, since each packet has a header, there is more data being used with this method. Secondly, the packets all have to be put back together at the destination.
+    \end{enumerate}
 \end{enumerate}
 \end{document}

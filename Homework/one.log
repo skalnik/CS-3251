@@ -1,4 +1,4 @@
-This is pdfTeXk, Version 3.1415926-1.40.9 (Web2C 7.5.7) (format=pdflatex 2010.6.14)  9 SEP 2010 19:27
+This is pdfTeXk, Version 3.1415926-1.40.9 (Web2C 7.5.7) (format=pdflatex 2010.6.14)  9 SEP 2010 21:35
 entering extended mode
  %&-line parsing enabled.
 **one.tex
@@ -71,18 +71,18 @@ Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
 ) (./one.aux)
 \openout1 = `one.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
 
 (/usr/local/Cellar/tex-live/20080816/share/texmf-dist/tex/context/base/supp-pdf
 .tex
@@ -99,23 +99,35 @@ LaTeX Font Info:    ... okay on input line 10.
 \everyMPtoPDFconversion=\toks18
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 16.
+(Font)              <12> on input line 17.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 16.
+(Font)              <8> on input line 17.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 16.
- [1
+(Font)              <6> on input line 17.
+
+Overfull \hbox (60.52129pt too wide) in paragraph at lines 36--37
+[]\OT1/cmr/m/n/12 For the first packet to get to the des-ti-na-tion, it'll take
+ $3 \OMS/cmsy/m/n/12 ^^B [] \OT1/cmr/m/n/12 =
+ []
+
+
+Overfull \hbox (33.0072pt too wide) in paragraph at lines 36--37
+\OT1/cmr/m/n/12 2\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 861 []$. The sec-ond packet 
+will ar-rive $4 \OMS/cmsy/m/n/12 ^^B [] \OT1/cmr/m/n/12 =
+ []
+
+[1
 
 {/usr/local/Cellar/tex-live/20080816/share/texmf/fonts/map/pdftex/updmap/pdftex
 .map}] (./one.aux) ) 
 Here is how much of TeX's memory you used:
  920 strings out of 493886
  12237 string characters out of 1144784
- 61808 words of memory out of 3000000
+ 64821 words of memory out of 3000000
  4243 multiletter control sequences out of 10000+50000
  6674 words of font info for 24 fonts, out of 3000000 for 5000
  714 hyphenation exceptions out of 8191
- 25i,4n,19p,344b,155s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 25i,4n,19p,492b,155s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/local/Cellar/tex-live/20080816/share/texmf-dist/fonts
 /type1/bluesky/cm/cmex10.pfb></usr/local/Cellar/tex-live/20080816/share/texmf-d
 ist/fonts/type1/bluesky/cm/cmmi12.pfb></usr/local/Cellar/tex-live/20080816/shar
@@ -123,7 +135,7 @@ e/texmf-dist/fonts/type1/bluesky/cm/cmmi8.pfb></usr/local/Cellar/tex-live/20080
 816/share/texmf-dist/fonts/type1/bluesky/cm/cmr12.pfb></usr/local/Cellar/tex-li
 ve/20080816/share/texmf-dist/fonts/type1/bluesky/cm/cmr8.pfb></usr/local/Cellar
 /tex-live/20080816/share/texmf-dist/fonts/type1/bluesky/cm/cmsy10.pfb>
-Output written on one.pdf (1 page, 29033 bytes).
+Output written on one.pdf (1 page, 31885 bytes).
 PDF statistics:
  30 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
