@@ -37,8 +37,8 @@ void calculate(char *data)
         {
             if(top < 2)
                 DieWithError("Malformed RPN String");
-            value1 = stack[--top];
             value2 = stack[--top];
+            value1 = stack[--top];
             sprintf(toSend, "%d %d %s", value1, value2, token);
             toSendLen = strlen(toSend);
 
