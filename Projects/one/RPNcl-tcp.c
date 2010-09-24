@@ -6,7 +6,6 @@
 #include <string.h>     /* for memset() */
 #include <unistd.h>     /* for close() */
 
-#define PORT 13831      /* Port used */
 #define RCVBUFSIZE 32   /* Size of receive buffer */
 #define STACKSIZE 10    /* Size of stack used for calculations */
 int sock;               /* Socket descriptor */
@@ -33,8 +32,8 @@ void calculate(char *data)
     token = strtok(data, " ");
     while(token != NULL)
     {
-        if(strpbrk(token, "+-*/") != NULL) /* Operator. Pop off 2 values & get help from server */
-        {
+        if(strpbrk(token, "+-*/") != NULL) 
+        { /* Operator. Pop off 2 values & get help from server */
             if(top < 2)
                 DieWithError("Malformed RPN String");
             value2 = stack[--top];
@@ -53,7 +52,8 @@ void calculate(char *data)
             /* Push value onto stack and continue */
             stack[top++] = atoi(buffer);
         }
-        else { /* Number. Push it onto the stack */
+        else
+        { /* Number. Push it onto the stack */
             if(top == STACKSIZE)
                 DieWithError("Stack Overflow");
             stack[top++] = atoi(token);
