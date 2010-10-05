@@ -7,7 +7,11 @@
 
 #define ECHOMAX 255     /* Longest string to echo */
 
-void DieWithError(char *errorMessage);  /* External error handling function */
+void DieWithError(char *errorMessage)
+{
+    perror(errorMessage);
+    exit(1);
+}
 
 int main(int argc, char *argv[])
 {
@@ -18,6 +22,8 @@ int main(int argc, char *argv[])
     char echoBuffer[ECHOMAX];        /* Buffer for echo string */
     unsigned short echoServPort;     /* Server port */
     int recvMsgSize;                 /* Size of received message */
+    char *token;
+    int value1, value2, res;
 
     if (argc != 2)         /* Test for correct number of parameters */
     {
@@ -53,6 +59,24 @@ int main(int argc, char *argv[])
 
         printf("Handling client %s\n", inet_ntoa(echoClntAddr.sin_addr));
 
+        token = strtok(echoBuffer, " ");
+        value1 = atoi(token); token = strtok(NULL, " ");
+        value2 = atoi(token); token = strtok(NULL, " ");
+        printf("%d %c %d", value1, token[0], value2);
+        fflush(stdout);
+
+
+        if(token[0] == '+')
+            res = value1 + value2;
+        else if(token[0] == '-')
+            res = value1 - value2;
+        else if(token[0] == '*')
+            res = value1 * value2;
+        else
+            res = value1 / value2;
+        sprintf(echoBuffer, "%d", res);
+        recvMsgSize = strlen(echoBuffer);
+
         /* Send received datagram back to the client */
         if (sendto(sock, echoBuffer, recvMsgSize, 0, 
              (struct sockaddr *) &echoClntAddr, sizeof(echoClntAddr)) != recvMsgSize)
@@ -60,4 +84,3 @@ int main(int argc, char *argv[])
     }
     /* NOT REACHED */
 }
-

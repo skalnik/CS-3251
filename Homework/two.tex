@@ -1,0 +1,74 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\title{Homework 2}
+\author{Mike Skalnik}
+
+\newcommand{\s}[1]{\setcounter{enumi}{#1}}
+\newcommand{\unit}[1]{\ensuremath{\, \mathrm{#1}}}
+\newcommand{\e}[1]{\ensuremath{\times 10^{#1}}}
+
+\begin{document}
+
+\begin{flushright}{\large Homework 2\\ Mike Skalnik}\end{flushright}
+
+Chapter 2
+
+\begin{enumerate}
+  \s{6}
+  \item Assuming zero transmission time of the object itself, the transfer time is simply $2 \mathrm{RTT}_0 + \mathrm{RTT}_1 + \mathrm{RTT}_2 + \dots + \mathrm{RTT}_n$ since $\mathrm{RTT}_0$ is done twice. Once for the actual webpage and once the connection request.
+
+  \item
+    \begin{enumerate}
+      \item There needs to be $2 \mathrm{RTT}_0$ for the html file and another $2 \mathrm{RTT}_0$ for each of the objects. This means a total of $18 \mathrm{RTT}_0 + \mathrm{RTT}_1 + \mathrm{RTT}_2 + \dots + \mathrm{RTT}_n$ time elapses.
+      \item $2 \mathrm{RTT}_0$ for the initial html file, then another for the first 5 objects, and one more for the remaining objects. $6 \mathrm{RTT}_0 + \mathrm{RTT}_1 + \mathrm{RTT}_2 + \dots + \mathrm{RTT}_n$
+      \item $2 \mathrm{RTT}_0$ for the initial transfer and $\mathrm{RTT}_0$ for the rest of the objects, for a total of $3 \mathrm{RTT}_0 + \mathrm{RTT}_1 + \mathrm{RTT}_2 + \dots + \mathrm{RTT}_n$
+    \end{enumerate}
+\end{enumerate}
+
+Chapter 4
+
+\begin{enumerate}
+  \item If routers are prone to failure, then a VC network is optimal. With a VC network, a connection must be made first, this will ensure that the router is present before sending information to it. With a datagram network would have to set up new paths, along with update routing tables for routers that fail.
+
+  \s{8}
+  \item
+    \begin{enumerate}
+      \item
+        \begin{tabular}{|l|r|}
+          \hline
+          Prefix Match & Interface \\ \hline
+          11100000 00 & 0 \\
+          11100000 01000000 & 1 \\
+          11100000 01000001 & 2 \\
+          11100001 & 2 \\
+          Otherwise & 3\\ \hline
+        \end{tabular}
+      \item It matches on prefix to determine that the first address should go through interface 3, and the other two should go through 2.
+    \end{enumerate}
+
+  \item
+    \begin{tabular}{|l|c|r|}
+      \hline
+      Destination Address Range & \# of Addresses & Interface \# \\ \hline
+      0000 0000 through 0100 0000 & 64 & 0 \\
+      0100 0001 through 0101 1111 & 30 & 1 \\
+      0110 0000 through 1011 1111 & 95 & 2 \\
+      1100 0000 through 1111 1111 & 63 & 3 \\ \hline
+    \end{tabular}
+
+  \s{14}
+  \item 128.119.40.130 can be assigned on a subnet with the prefix 128.119.40.128/26. Four equal subnets would be: \\
+    \begin{tabular}{r}
+      128.119.40.64/28 \\
+      128.119.40.80/28 \\
+      128.119.40.96/28 \\
+      128.119.40.112/28
+    \end{tabular}
+
+  \s{16}
+  \item Payload per fragment is the MTU less 20 bytes for IP header, so $680 \unit{\frac{bytes}{fragment}}$, therefore the number of fragments is $\lceil\frac{2400-20}{680}\rceil = 4$. Each fragment will have an identification number of 422, be 700 bytes (except the last which will be 360 bytes), and have an MF flag of 1 (except the last will have a flag of 0).
+\end{enumerate}
+\end{document}
+
+

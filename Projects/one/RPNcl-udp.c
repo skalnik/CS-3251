@@ -5,71 +5,102 @@
 #include <string.h>     /* for memset() */
 #include <unistd.h>     /* for close() */
 
-#define ECHOMAX 255     /* Longest string to echo */
+#define RCVBUFSIZE 32               /* Size of receiving buffer */
+#define STACKSIZE 10                /* Size of stack used for calculations */
+int sock;                           /* Socket descriptor */
+struct sockaddr_in servAddr;        /* Server address */
+struct sockaddr_in fromAddr;        /* Source address */
 
-void DieWithError(char *errorMessage);  /* External error handling function */
+void DieWithError(char *errorMessage)
+{
+    perror(errorMessage);
+    exit(1);
+}
+
+void calculate(char *data)
+{
+    int value1, value2;
+    char toSend[32];
+    unsigned int toSendLen, fromSize, respStringLen;
+    char buffer[RCVBUFSIZE];
+    char *token;
+
+    /* Stack Initialization */
+    int *stack;
+    int top;
+    stack = malloc(STACKSIZE*sizeof(int));
+    top = 0;
+
+    token = strtok(data, " ");
+    while(token != NULL)
+    {
+        if(strpbrk(token, "+-*/") != NULL) 
+        { /* Operator. Pop off 2 values & get help from server */
+            if(top < 2)
+                DieWithError("Malformed RPN String");
+            value2 = stack[--top];
+            value1 = stack[--top];
+            sprintf(toSend, "%d %d %s", value1, value2, token);
+            toSendLen = strlen(toSend);
+
+            /* Send string to server */
+            if (sendto(sock, toSend, toSendLen, 0, (struct sockaddr *)
+                       &servAddr, sizeof(servAddr)) != toSendLen)
+                DieWithError("sendto() sent a different number of bytes than expected");
+          
+            /* Now get the answer from the server */
+            fromSize = sizeof(fromAddr);
+            if ((respStringLen = recvfrom(sock, buffer, RCVBUFSIZE, 0, 
+                                         (struct sockaddr *) &fromAddr, &fromSize)) == -1)
+                DieWithError("recvfrom() failed");
+
+            if (servAddr.sin_addr.s_addr != fromAddr.sin_addr.s_addr)
+                DieWithError("Error: received a packet from unknown source.\n");
+
+            /* Push value onto stack and continue */
+            stack[top++] = atoi(buffer);
+        }
+        else 
+        { /* Number. Push it onto the stack */
+            if(top == STACKSIZE)
+                DieWithError("Stack Overflow");
+            stack[top++] = atoi(token);
+        }
+        token = strtok(NULL, " ");
+    }
+    if(top > 1)
+        DieWithError("Malformed RPN String");
+    printf("%d\n", stack[0]);
+}
 
 int main(int argc, char *argv[])
 {
-    int sock;                        /* Socket descriptor */
-    struct sockaddr_in echoServAddr; /* Echo server address */
-    struct sockaddr_in fromAddr;     /* Source address of echo */
-    unsigned short echoServPort;     /* Echo server port */
-    unsigned int fromSize;           /* In-out of address size for recvfrom() */
-    char *servIP;                    /* IP address of server */
-    char *echoString;                /* String to send to echo server */
-    char echoBuffer[ECHOMAX+1];      /* Buffer for receiving echoed string */
-    int echoStringLen;               /* Length of string to echo */
-    int respStringLen;               /* Length of received response */
+    unsigned short servPort;            /* Echo server port */
+    char *servIP;                       /* IP address of server */
+    char *string;                       /* String to send to echo server */
 
-    if ((argc < 3) || (argc > 4))    /* Test for correct number of arguments */
+    if(argc != 4)    /* Test for correct number of arguments */
     {
-        fprintf(stderr,"Usage: %s <Server IP> <Echo Word> [<Echo Port>]\n", argv[0]);
+        fprintf(stderr,"Usage: %s <Server IP> <Server Port> <RPN String>\n", argv[0]);
         exit(1);
     }
 
     servIP = argv[1];           /* First arg: server IP address (dotted quad) */
-    echoString = argv[2];       /* Second arg: string to echo */
-
-    if ((echoStringLen = strlen(echoString)) > ECHOMAX)  /* Check input length */
-        DieWithError("Echo word too long");
-
-    if (argc == 4)
-        echoServPort = atoi(argv[3]);  /* Use given port, if any */
-    else
-        echoServPort = 7;  /* 7 is the well-known port for the echo service */
+    servPort = atoi(argv[2]);    /* Second arg: server port */
+    string = argv[3];           /* Third arg: RPN string */
 
     /* Create a datagram/UDP socket */
     if ((sock = socket(PF_INET, SOCK_DGRAM, IPPROTO_UDP)) < 0)
         DieWithError("socket() failed");
 
     /* Construct the server address structure */
-    memset(&echoServAddr, 0, sizeof(echoServAddr));    /* Zero out structure */
-    echoServAddr.sin_family = AF_INET;                 /* Internet addr family */
-    echoServAddr.sin_addr.s_addr = inet_addr(servIP);  /* Server IP address */
-    echoServAddr.sin_port   = htons(echoServPort);     /* Server port */
+    memset(&servAddr, 0, sizeof(servAddr));    /* Zero out structure */
+    servAddr.sin_family = AF_INET;                 /* Internet addr family */
+    servAddr.sin_addr.s_addr = inet_addr(servIP);  /* Server IP address */
+    servAddr.sin_port   = htons(servPort);     /* Server port */
 
-    /* Send the string to the server */
-    if (sendto(sock, echoString, echoStringLen, 0, (struct sockaddr *)
-               &echoServAddr, sizeof(echoServAddr)) != echoStringLen)
-        DieWithError("sendto() sent a different number of bytes than expected");
-  
-    /* Recv a response */
-    fromSize = sizeof(fromAddr);
-    if ((respStringLen = recvfrom(sock, echoBuffer, ECHOMAX, 0, 
-         (struct sockaddr *) &fromAddr, &fromSize)) != echoStringLen)
-        DieWithError("recvfrom() failed");
+    calculate(string);
 
-    if (echoServAddr.sin_addr.s_addr != fromAddr.sin_addr.s_addr)
-    {
-        fprintf(stderr,"Error: received a packet from unknown source.\n");
-        exit(1);
-    }
-
-    /* null-terminate the received data */
-    echoBuffer[respStringLen] = '\0';
-    printf("Received: %s\n", echoBuffer);    /* Print the echoed arg */
-    
     close(sock);
     exit(0);
 }

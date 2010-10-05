@@ -1,0 +1,137 @@
+This is pdfTeXk, Version 3.1415926-1.40.9 (Web2C 7.5.7) (format=pdflatex 2010.6.14)  30 SEP 2010 20:43
+entering extended mode
+ %&-line parsing enabled.
+**two.tex
+(./two.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, german-x-2008-06-18, ngerman-x-2008-06-18, ancientgreek, ibycus, ar
+abic, basque, bulgarian, catalan, pinyin, coptic, croatian, czech, danish, dutc
+h, esperanto, estonian, farsi, finnish, french, galician, german, ngerman, mono
+greek, greek, hungarian, icelandic, indonesian, interlingua, irish, italian, la
+tin, mongolian, mongolian2a, bokmal, nynorsk, polish, portuguese, romanian, rus
+sian, sanskrit, serbian, slovak, slovenian, spanish, swedish, turkish, ukenglis
+h, ukrainian, uppersorbian, welsh, loaded.
+
+(/usr/local/Cellar/tex-live/20080816/share/texmf-dist/tex/latex/base/article.cl
+s
+Document Class: article 2005/09/16 v1.4f Standard LaTeX document class
+
+(/usr/local/Cellar/tex-live/20080816/share/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2005/09/16 v1.4f Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/local/Cellar/tex-live/20080816/share/texmf-dist/tex/latex/graphics/graphi
+cx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/Cellar/tex-live/20080816/share/texmf-dist/tex/latex/graphics/keyval
+.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/local/Cellar/tex-live/20080816/share/texmf-dist/tex/latex/graphics/graphi
+cs.sty
+Package: graphics 2006/02/20 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/Cellar/tex-live/20080816/share/texmf-dist/tex/latex/graphics/trig.s
+ty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/local/Cellar/tex-live/20080816/share/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 90.
+
+(/usr/local/Cellar/tex-live/20080816/share/texmf-dist/tex/latex/pdftex-def/pdft
+ex.def
+File: pdftex.def 2008/07/16 v0.04k Graphics/color for pdfTeX
+\Gread@gobject=\count87
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+(/usr/local/Cellar/tex-live/20080816/share/texmf-dist/tex/latex/tools/verbatim.
+sty
+Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks15
+\verbatim@line=\toks16
+\verbatim@in@stream=\read1
+) (./two.aux)
+\openout1 = `two.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+
+(/usr/local/Cellar/tex-live/20080816/share/texmf-dist/tex/context/base/supp-pdf
+.tex
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count88
+\scratchdimen=\dimen105
+\scratchbox=\box26
+\nofMPsegments=\count89
+\nofMParguments=\count90
+\everyMPshowfont=\toks17
+\MPscratchCnt=\count91
+\MPscratchDim=\dimen106
+\MPnumerator=\count92
+\everyMPtoPDFconversion=\toks18
+)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 19.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 19.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 19.
+
+Overfull \hbox (27.96927pt too wide) in paragraph at lines 61--68
+[]\OT1/cmr/m/n/12 128.119.40.130 can be as-signed on a sub-net with the pre-fix
+ 128.119.40.128/26.
+ []
+
+[1
+
+{/usr/local/Cellar/tex-live/20080816/share/texmf/fonts/map/pdftex/updmap/pdftex
+.map}] [2] (./two.aux) ) 
+Here is how much of TeX's memory you used:
+ 920 strings out of 493886
+ 12237 string characters out of 1144784
+ 64821 words of memory out of 3000000
+ 4243 multiletter control sequences out of 10000+50000
+ 6674 words of font info for 24 fonts, out of 3000000 for 5000
+ 714 hyphenation exceptions out of 8191
+ 25i,6n,19p,382b,231s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/local/Cellar/tex-live/20080816/share/texmf-dist/f
+onts/type1/bluesky/cm/cmmi12.pfb></usr/local/Cellar/tex-live/20080816/share/tex
+mf-dist/fonts/type1/bluesky/cm/cmmi8.pfb></usr/local/Cellar/tex-live/20080816/s
+hare/texmf-dist/fonts/type1/bluesky/cm/cmr12.pfb></usr/local/Cellar/tex-live/20
+080816/share/texmf-dist/fonts/type1/bluesky/cm/cmr8.pfb></usr/local/Cellar/tex-
+live/20080816/share/texmf-dist/fonts/type1/bluesky/cm/cmsy10.pfb></usr/local/Ce
+llar/tex-live/20080816/share/texmf-dist/fonts/type1/bluesky/cm/cmsy8.pfb>
+Output written on two.pdf (2 pages, 30841 bytes).
+PDF statistics:
+ 33 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 131072)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+
